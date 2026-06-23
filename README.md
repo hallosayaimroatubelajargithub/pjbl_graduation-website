@@ -11,13 +11,13 @@ Projek ini dikembangkan sebagai media pembelajaran berbasis **Project Based Lear
 3. Validasi akses pengguna
 4. Tampilan hasil kelulusan (Lulus/Tidak Lulus)
 5. Antarmuka (UI) yang sederhana dan mudah digunakan
-6. Responsif dan mudah diakses oleh siswa
+6. Responsif dan mudah diakses oleh murid
 
 **Tujuan Proyek** </br>
 Membantu murid memahami penerapan nyata algoritma dan pemrograman dalam pengembangan website, sekaligus menyediakan sistem pengumuman kelulusan yang lebih modern, efisien, dan ramah pengguna.
 
 ### Kode Login : 
-| Nama Siswa    | NIS        | Kode Login |
+| Nama Murid    | NIS        | Kode Login |
 |--------------|------------|------------|
 | AHMAD FAUZI  | 0012345678 | AF7281     |
 | SITI AISYAH  | 0012345679 | SA5194     |
