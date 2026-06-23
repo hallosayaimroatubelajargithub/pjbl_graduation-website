@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pengumuman Kelulusan Kelas XII</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f2f4f8;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.phone{
+width:100%;
+max-width:390px;
+height:750px;
+background:#2554B8;
+border-radius:25px;
+overflow:hidden;
+position:relative;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.page{
+display:none;
+height:100%;
+}
+
+.active{
+display:block;
+}
+
+.top{
+height:150px;
+background:white;
+border-radius:0 0 25px 25px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.logo{
+width:70px;
+}
+
+.content{
+padding:25px;
+color:white;
+text-align:center;
+}
+
+.title{
+font-size:28px;
+font-weight:700;
+line-height:1.2;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:14px;
+opacity:.9;
+}
+
+.btn{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:white;
+color:#2554B8;
+font-weight:600;
+margin-top:20px;
+cursor:pointer;
+}
+
+.back-btn{
+position:absolute;
+top:15px;
+left:15px;
+background:none;
+border:none;
+font-size:35px;
+color:#d8d8d8;
+cursor:pointer;
+z-index:99;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.card{
+background:rgba(255,255,255,.15);
+padding:10px;
+border-radius:12px;
+cursor:pointer;
+transition:.2s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:50px;
+height:50px;
+object-fit:contain;
+}
+
+.card span{
+display:block;
+font-size:9px;
+margin-top:5px;
+}
+
+input{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+margin-top:20px;
+outline:none;
+}
+
+.loader{
+width:60px;
+height:60px;
+border:6px solid rgba(255,255,255,.3);
+border-top:6px solid white;
+border-radius:50%;
+margin:25px auto;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+.result-box{
+background:white;
+border-radius:20px;
+padding:20px;
+color:#333;
+}
+
+.lulus{
+font-size:36px;
+font-weight:700;
+color:green;
+}
+
+.avatar{
+font-size:70px;
+margin:10px 0;
+}
+
+.footer{
+position:absolute;
+bottom:10px;
+width:100%;
+text-align:center;
+font-size:10px;
+color:white;
+}
+
+.popup{
+display:none;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(0,0,0,.85);
+padding:20px;
+border-radius:15px;
+color:white;
+font-weight:600;
+z-index:999;
+}
+
+.popup.show{
+display:block;
+}
+
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+<div id="popupError" class="popup">
+Kode Salah!
+</div>
+
+<!-- HALAMAN AWAL -->
+<div class="page active" id="page1">
+
+<div class="top">
+<img class="logo"
+src="img/twh.png">
+</div>
+
+<div class="content">
+
+<div class="title">
+Pengumuman<br>
+Kelulusan Kelas XII
+</div>
+
+<div class="subtitle">
+Tahun Pelajaran 2025/2026
+</div>
+
+<br><br>
+
+<div class="subtitle">
+Silakan klik tombol di bawah untuk melihat pengumuman kelulusan.
+</div>
+
+<button class="btn" onclick="showPage('page2')">
+Lihat Pengumuman
+</button>
+
+</div>
+
+</div>
+
+<!-- PILIH SISWA -->
+<div class="page" id="page2">
+
+<button class="back-btn" onclick="showPage('page1')">
+&#8249;
+</button>
+
+<div class="top">
+<img class="logo"
+src="img/twh.png">
+</div>
+
+<div class="content">
+
+<h3>Pilih Nama Siswa</h3>
+
+<div class="grid">
+
+<div class="card" onclick="pilihSiswa(0)">
+<img src="img/male.png">
+<span>AHMAD FAUZI</span>
+</div>
+
+<div class="card" onclick="pilihSiswa(1)">
+<img src="img/female.png">
+<span>SITI AISYAH</span>
+</div>
+
+<div class="card" onclick="pilihSiswa(2)">
+<img src="img/male.png">
+<span>BUDI SANTOSO</span>
+</div>
+
+<div class="card" onclick="pilihSiswa(3)">
+<img src="img/female.png">
+<span>NURUL HIDAYAH</span>
+</div>
+
+<div class="card" onclick="pilihSiswa(4)">
+<img src="img/male.png">
+<span>RIZKI RAMADHAN</span>
+</div>
+
+<div class="card" onclick="pilihSiswa(5)">
+<img src="img/female.png">
+<span>DEWI LESTARI</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- INPUT KODE -->
+<div class="page" id="page3">
+
+<button class="back-btn" onclick="showPage('page2')">
+&#8249;
+</button>
+
+<div class="top">
+<img class="logo"
+src="img/twh.png">
+</div>
+
+<div class="content">
+
+<h3>Masukkan Kode</h3>
+
+<p id="namaSiswa"></p>
+
+<input
+type="password"
+id="kode"
+placeholder="Masukkan Kode">
+
+<button class="btn" onclick="cekKode()">
+Cek Kelulusan
+</button>
+
+</div>
+
+</div>
+
+<!-- LOADING -->
+<div class="page" id="loading">
+
+<div class="content" style="margin-top:200px">
+
+<h3>Mohon Ditunggu</h3>
+
+<div class="loader"></div>
+
+<p>Sedang memproses data...</p>
+
+</div>
+
+</div>
+
+<!-- HASIL -->
+<div class="page" id="hasil">
+
+<button class="back-btn" onclick="showPage('page2')">
+&#8249;
+</button>
+
+<div class="top">
+<img class="logo"
+src="img/twh.png">
+</div>
+
+<div class="content">
+
+<div class="result-box">
+
+<h3>Selamat</h3>
+
+<p>Anda dinyatakan</p>
+
+<div class="lulus">
+LULUS
+</div>
+
+<div class="avatar">
+👨‍🎓
+</div>
+
+<p><b id="hasilNama"></b></p>
+
+<p>NISN : <span id="hasilNisn"></span></p>
+
+<p>Melanjutkan Pendidikan</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 Imroatu Solicah
+</div>
+
+</div>
+
+<script>
+
+const dataSiswa = [
+
+{
+nama:"AHMAD FAUZI",
+nisn:"0012345678",
+kode:"AF7281"
+},
+
+{
+nama:"SITI AISYAH",
+nisn:"0012345679",
+kode:"SA5194"
+},
+
+{
+nama:"BUDI SANTOSO",
+nisn:"0012345680",
+kode:"BS2468"
+},
+
+{
+nama:"NURUL HIDAYAH",
+nisn:"0012345681",
+kode:"NH8935"
+},
+
+{
+nama:"RIZKI RAMADHAN",
+nisn:"0012345682",
+kode:"RR1375"
+},
+
+{
+nama:"DEWI LESTARI",
+nisn:"0012345683",
+kode:"DL6429"
+}
+
+];
+
+let siswaAktif = null;
+
+function showPage(pageId){
+
+document.querySelectorAll('.page').forEach(page=>{
+page.classList.remove('active');
+});
+
+document.getElementById(pageId).classList.add('active');
+
+}
+
+function pilihSiswa(index){
+
+siswaAktif = dataSiswa[index];
+
+document.getElementById("namaSiswa").innerText =
+siswaAktif.nama;
+
+document.getElementById("kode").value = "";
+
+showPage("page3");
+
+}
+
+function showPopup(){
+
+const popup = document.getElementById("popupError");
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+popup.classList.remove("show");
+},2000);
+
+}
+
+function cekKode(){
+
+let kode =
+document.getElementById("kode").value.trim();
+
+if(kode===""){
+showPopup();
+return;
+}
+
+showPage("loading");
+
+setTimeout(()=>{
+
+if(kode === siswaAktif.kode){
+
+document.getElementById("hasilNama").innerText =
+siswaAktif.nama;
+
+document.getElementById("hasilNisn").innerText =
+siswaAktif.nisn;
+
+showPage("hasil");
+
+}else{
+
+showPage("page3");
+showPopup();
+
+}
+
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
